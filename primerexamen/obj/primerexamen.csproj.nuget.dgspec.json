@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chriss\\source\\repos\\primerexamen\\primerexamen\\primerexamen.csproj": {}
+    "C:\\Users\\Chriss\\Desktop\\examen\\primerexamen\\primerexamen.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chriss\\source\\repos\\primerexamen\\primerexamen\\primerexamen.csproj": {
+    "C:\\Users\\Chriss\\Desktop\\examen\\primerexamen\\primerexamen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chriss\\source\\repos\\primerexamen\\primerexamen\\primerexamen.csproj",
+        "projectUniqueName": "C:\\Users\\Chriss\\Desktop\\examen\\primerexamen\\primerexamen.csproj",
         "projectName": "primerexamen",
-        "projectPath": "C:\\Users\\Chriss\\source\\repos\\primerexamen\\primerexamen\\primerexamen.csproj",
+        "projectPath": "C:\\Users\\Chriss\\Desktop\\examen\\primerexamen\\primerexamen.csproj",
         "packagesPath": "C:\\Users\\Chriss\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chriss\\source\\repos\\primerexamen\\primerexamen\\obj\\",
+        "outputPath": "C:\\Users\\Chriss\\Desktop\\examen\\primerexamen\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

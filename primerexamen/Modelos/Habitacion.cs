@@ -2,13 +2,9 @@
 
 namespace primerexamen.Modelos
 {
-    public class Habitacion : IRegistrable
+    public class Habitacion
     {
         public int Numero { get; set; }
 
-        public void Registrar()
-        {
-            Console.WriteLine("Habitación registrada con éxito. Número: " + Numero);
-        }
     }
 }

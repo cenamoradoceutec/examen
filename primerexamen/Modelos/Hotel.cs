@@ -15,7 +15,6 @@ namespace primerexamen.Modelos
         public void RegistrarClienteHabitacion(Cliente cliente, Habitacion habitacion)
         {
             cliente.HistorialHabitaciones.Add(habitacion);
-            //Console.WriteLine("Cliente y Habitación registrados con éxito.");
         }
     }
 }

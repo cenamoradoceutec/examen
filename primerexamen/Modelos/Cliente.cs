@@ -2,7 +2,7 @@
 
 namespace primerexamen.Modelos
 {
-    public class Cliente : IRegistrable
+    public class Cliente 
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -15,22 +15,5 @@ namespace primerexamen.Modelos
             return 0;
         }
 
-        public void Registrar()
-        {
-            Console.WriteLine("Cliente registrado con éxito. Nombre: " + Nombre + " " + Apellido + " Tipo: " + TipoCliente);
-        }
-
-        public void MostrarHistorialHabitaciones()
-        {
-            Console.WriteLine("=================================================");
-            Console.WriteLine("Historial de Habitaciones de " + Nombre + " " + Apellido + ":");
-            Console.WriteLine("=================================================");
-            foreach (var habitacion in HistorialHabitaciones)
-            {
-                Console.WriteLine("Hubo un registro:");
-                Console.WriteLine("- Número de Habitación: " + habitacion.Numero);
-                Console.WriteLine("- Tipo de Habitación: " + habitacion.GetType().Name);
-            }
-        }
     }
 }
