@@ -2,53 +2,50 @@
 using System;
 using System.Collections.Generic;
 
+
+
 Hotel hotel = new Hotel();
 
-Console.WriteLine("Se registraran Los clientes");
-Cliente cliente1 = new ClienteVIP { Nombre = "Juan", Apellido = "Perez", TipoCliente = "VIP", Descuento = 0.10 };
-Cliente cliente2 = new Cliente { Nombre = "María", Apellido = "Rodriguez", TipoCliente = "Normal" };
-
-Console.WriteLine("Cliente registrado con éxito. Nombre: " + cliente1.Nombre + " " + cliente1.Apellido + " Tipo: " + cliente1.TipoCliente);
-Console.WriteLine("Cliente registrado con éxito. Nombre: " + cliente2.Nombre + " " + cliente2.Apellido + " Tipo: " + cliente2.TipoCliente);
-Console.WriteLine("=================================================");
-
-
-HabitacionSencilla habitacionSencilla = new HabitacionSencilla { Numero = 101 };
-HabitacionDoble habitacionDoble = new HabitacionDoble { Numero = 201 };
-Suite suite = new Suite { Numero = 301, NivelLujos = 5 };
-Console.WriteLine("Se registraron Las Habitaciones");
-Console.WriteLine("=================================================");
-
-Console.WriteLine("Se registraran los clientes en sus Habitaciones");
-hotel.RegistrarClienteHabitacion(cliente1, habitacionSencilla);
-Console.WriteLine("***" + cliente1.Nombre+" "+cliente1.Apellido+ " Se Registro en la Habitacion: " +habitacionSencilla.Numero);
-hotel.RegistrarClienteHabitacion(cliente2, habitacionDoble);
-Console.WriteLine("***" + cliente2.Nombre+" "+cliente2.Apellido + " Se Registro en la Habitacion: " + habitacionDoble.Numero);
-hotel.RegistrarClienteHabitacion(cliente1, suite);
-Console.WriteLine("***" + cliente1.Nombre+" "+cliente1.Apellido + " Se Registro en la Habitacion: " + suite.Numero);
-
-Console.WriteLine("=================================================");
-
-Console.WriteLine("Se Mostraran el Historial de los Clientes");
-
-Console.WriteLine("=================================================");
-Console.WriteLine("Historial de Habitaciones de " + cliente1.Nombre + " " + cliente1.Apellido + ":");
-Console.WriteLine("=================================================");
-foreach (var habitacion in cliente1.HistorialHabitaciones)
+HabitacionNormal habitacionNormal = new HabitacionNormal
 {
-    Console.WriteLine("Hubo un registro:");
-    Console.WriteLine("- Número de Habitación: " + habitacion.Numero);
-    Console.WriteLine("- Tipo de Habitación: " + habitacion.GetType().Name);
+    NumeroCuarto = 101,
+    Precio = 50.00,
+    CantidadCamas = 2,
+    Ducha = "Sí",
+    Microondas = true,
+    Ventanas = true
+};
+
+HabitacionSuite habitacionSuite = new HabitacionSuite
+{
+    NumeroCuarto = 201,
+    Precio = 100.00,
+    CantidadCamas = 1,
+    Cocina = true,
+    Terraza = true,
+    Jacuzzi = true
+};
+
+hotel.RegistrarHabitacion(habitacionNormal);
+hotel.RegistrarHabitacion(habitacionSuite);
+
+ClienteVIP clienteVIP = new ClienteVIP("Juan Pérez");
+ClienteNormal clienteNormal = new ClienteNormal("María González");
+
+hotel.RegistrarCliente(clienteVIP, habitacionSuite);
+hotel.RegistrarCliente(clienteNormal, habitacionNormal);
+hotel.RegistrarCliente(clienteVIP, habitacionNormal);
+
+Console.WriteLine("Habitaciones registradas en el hotel:");
+foreach (Habitacion habitacion in hotel.Habitaciones)
+{
+    Console.WriteLine("{0}: {1}, precio: {2:C}, camas: {3}", habitacion.GetTipo(), habitacion.NumeroCuarto, habitacion.Precio, habitacion.CantidadCamas);
 }
 
-Console.WriteLine("=================================================");
-Console.WriteLine("Historial de Habitaciones de " + cliente2.Nombre + " " + cliente2.Apellido + ":");
-Console.WriteLine("=================================================");
-foreach (var habitacion in cliente2.HistorialHabitaciones)
+Console.WriteLine("\nClientes registrados en el hotel:");
+foreach (Registro registro in hotel.Registros)
 {
-    Console.WriteLine("Hubo un registro:");
-    Console.WriteLine("- Número de Habitación: " + habitacion.Numero);
-    Console.WriteLine("- Tipo de Habitación: " + habitacion.GetType().Name);
+    Console.WriteLine("{0} ({1}) ha registrado la habitación {2} el {3}", registro.Cliente.NombreCompleto, registro.Cliente.Tipo.Tipo, registro.Habitacion.NumeroCuarto, registro.Fecha.ToString("dd/MM/yyyy"));
 }
 
-Console.ReadKey();
+Console.ReadLine();

@@ -2,18 +2,31 @@
 
 namespace primerexamen.Modelos
 {
-    public class Cliente 
+    public class Cliente
     {
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string TipoCliente { get; set; }
+        public string NombreCompleto { get; set; }
+        public TipoCliente Tipo { get; set; }
+        public List<Habitacion> HabitacionesRegistradas { get; set; }
 
-        public List<Habitacion> HistorialHabitaciones { get; set; } = new List<Habitacion>();
-
-        public virtual double ObtenerDescuento()
+        public Cliente(string nombreCompleto, TipoCliente tipo)
         {
-            return 0;
+            NombreCompleto = nombreCompleto;
+            Tipo = tipo;
+            HabitacionesRegistradas = new List<Habitacion>();
         }
+    }
 
+    public class ClienteNormal : Cliente
+    {
+        public ClienteNormal(string nombreCompleto) : base(nombreCompleto, new TipoCliente { Tipo = "Normal" })
+        {
+        }
+    }
+
+    public class ClienteVIP : Cliente
+    {
+        public ClienteVIP(string nombreCompleto) : base(nombreCompleto, new TipoCliente { Tipo = "VIP" })
+        {
+        }
     }
 }

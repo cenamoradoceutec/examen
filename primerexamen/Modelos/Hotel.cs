@@ -4,17 +4,24 @@ namespace primerexamen.Modelos
 {
     public class Hotel
     {
-        public List<IRegistrable> Registros { get; set; } = new List<IRegistrable>();
+        public List<Habitacion> Habitaciones { get; set; }
+        public List<Registro> Registros { get; set; }
 
-        public void Registrar(IRegistrable registro)
+        public Hotel()
         {
-            Registros.Add(registro);
-            registro.Registrar();
+            Habitaciones = new List<Habitacion>();
+            Registros = new List<Registro>();
         }
 
-        public void RegistrarClienteHabitacion(Cliente cliente, Habitacion habitacion)
+        public void RegistrarHabitacion(Habitacion habitacion)
         {
-            cliente.HistorialHabitaciones.Add(habitacion);
+            Habitaciones.Add(habitacion);
+        }
+
+        public void RegistrarCliente(Cliente cliente, Habitacion habitacion)
+        {
+            cliente.HabitacionesRegistradas.Add(habitacion);
+            Registros.Add(new Registro(DateTime.Now, cliente, habitacion));
         }
     }
 }
